@@ -36,29 +36,60 @@ pswd=""
     
   }
 
-  // using event binding 
-  login(){
- // user acno n pswd
+//   // using event binding 
+//   login(){
+//  // user acno n pswd
 
-    var acno = this.acno
-    var pswd = this.pswd
+//     var acno = this.acno
+//     var pswd = this.pswd
 
-    var Database = this.dataBase
+//     var Database = this.dataBase
 
-    if (acno in Database){
-      if(pswd in Database[acno]["password"]){
+//     if (acno in Database){
+//        if(pswd == Database[acno]["password"]){
+  
+//         alert("login successful!!!!!")
+//       }else{
+//         alert("invalid password!!!!!")
+//       }
 
-        alert("login successful!!!!!")
-      }else{
-        alert("invalid password!!!!!")
+//     }else{
+//       alert("user doesnt exist!!!")
+//     }
+
+
+
+//   }
+
+ 
+ login(a:any,p:any){
+  
+      console.log(a.value);
+      console.log(p.value);
+      
+// user entered acno n psd 
+     var acno = a.value
+     var pswd = p.value
+ 
+     var Database = this.dataBase
+ 
+     if (acno in Database){
+
+          if(pswd == Database[acno]["password"]){
+ 
+          alert("login successful!!!!!")
+          
+          }else{
+          
+            alert("invalid password!!!!!")
+          }
+ 
+     }else{
+
+       alert("user doesnt exist!!!")
+     
       }
+   }
+ 
+ }
 
-    }else{
-      alert("user doesnt exist!!!")
-    }
-
-
-
-  }
-
-}
