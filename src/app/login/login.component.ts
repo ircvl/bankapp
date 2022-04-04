@@ -13,7 +13,7 @@ acno=""
 pswd=""
 
 //database 
-  dataBase ={
+  dataBase:any ={
     1000:{acno:1000,uname:"dani",password:1000,balance:1000},
     1001:{acno:1001,uname:"pt",password:1001,balance:2000},
     1002:{acno:1002,uname:"saman",password:1002,balance:3000},
@@ -36,8 +36,29 @@ pswd=""
     
   }
 
+  // using event binding 
   login(){
-    alert("login suceessfull")
+ // user acno n pswd
+
+    var acno = this.acno
+    var pswd = this.pswd
+
+    var Database = this.dataBase
+
+    if (acno in Database){
+      if(pswd in Database[acno]["password"]){
+
+        alert("login successful!!!!!")
+      }else{
+        alert("invalid password!!!!!")
+      }
+
+    }else{
+      alert("user doesnt exist!!!")
+    }
+
+
+
   }
 
 }
