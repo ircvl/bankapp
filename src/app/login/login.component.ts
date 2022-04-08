@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
+import { DatabaseService } from '../service/database.service';
 
 @Component({
   selector: 'app-login',
@@ -13,84 +14,28 @@ account="account number please!!!"
 acno=""
 pswd=""
 
-//database 
-  dataBase:any ={
-    1000:{acno:1000,uname:"dani",password:1000,balance:1000},
-    1001:{acno:1001,uname:"pt",password:1001,balance:2000},
-    1002:{acno:1002,uname:"saman",password:1002,balance:3000},
 
-  }
-  constructor(private router:Router) { }
+  constructor(private router:Router,private ds:DatabaseService) { }
 
   ngOnInit(): void {
   }
 
-//   acnoChange(event:any){
-//   this.acno=event.target.value
-//   console.log(this.acno);
-  
-// }
 
-//   pswdChange(event:any){
-//     this.pswd= event.target.value
-//     console.log(this.pswd);
-    
-//   }
 
-  // using event binding 
   login(){
- // user acno n pswd
+ // user entered acno n pswd
 
     var acno = this.acno
     var pswd = this.pswd
+    
+    //call login in dataserevice
 
-    var Database = this.dataBase
-
-    if (acno in Database){
-       if(pswd == Database[acno]["password"]){
-  
-        alert("login successful!!!!!")
+    const result = this.ds.login(acno,pswd)
+    if(result){
+      alert("login successful!!!!!")
         this.router.navigateByUrl("dashboard")
-
-      }else{
-        alert("invalid password!!!!!")
-      }
-
-    }else{
-      alert("user doesnt exist!!!")
     }
-
-}
-
- 
-//  login(a:any,p:any){
-  
-//       console.log(a.value);
-//       console.log(p.value);
-      
-// // user entered acno n psd 
-//      var acno = a.value
-//      var pswd = p.value
- 
-//      var Database = this.dataBase
- 
-//      if (acno in Database){
-
-//           if(pswd == Database[acno]["password"]){
- 
-//           alert("login successful!!!!!")
-          
-//           }else{
-          
-//             alert("invalid password!!!!!")
-//           }
- 
-//      }else{
-
-//        alert("user doesnt exist!!!")
-     
-//       }
-//    }
+  }
  
  }
 
