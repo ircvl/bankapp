@@ -61,7 +61,7 @@ export class DatabaseService {
   //deposit 
   deposit(acno:any,pswd:any,amt:any){
 
-    let amount = parseInt(amt)
+    var amount = parseInt(amt)
 
     let database = this.database
 
@@ -89,9 +89,13 @@ export class DatabaseService {
 
     if(acno1 in database){
       if(pswd1 == database[acno1]["password"]){
-        database[acno1]["balance"] -= amount1
+        if(database[acno1]["balance"] >=amount1){
+          database[acno1]["balance"] -= amount1
         return database[acno1]["balance"]
-        
+
+        }else{
+          alert("insufficient balance!!!!!!")
+        }
       }else{
         alert("invalid pasword!!!")
         return false

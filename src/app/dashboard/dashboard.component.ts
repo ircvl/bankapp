@@ -28,9 +28,10 @@ export class DashboardComponent implements OnInit {
     var pswd = this.pswd
     var amount = this.amount
 
+    //calling deposit in ds
     const result = this.ds.deposit(acno,pswd,amount)
     if(result){
-      alert(amount + "deposited successfully.... And new balace is:"+ result)
+      alert(amount + "deposited successfully.... And new balace is:" + result)
 
     }
   }
@@ -40,9 +41,10 @@ export class DashboardComponent implements OnInit {
     var pswd = this.pswd1
     var amount = this.amount1
 
+    //calling withdrw in ds
     const result = this.ds.withdraw(this.acno1,this.pswd1,this.amount1)
-    if(result){
-      alert(amount + "withdrawed successfully.. And new balance is:"+ result)
+    if(result>=0){
+      alert(amount + "withdrawed successfully.. And new balance is:" + result)
     }
 
   }
