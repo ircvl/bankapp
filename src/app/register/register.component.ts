@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { FormBuilder, ReactiveFormsModule } from '@angular/forms';
+import { FormBuilder, ReactiveFormsModule, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
 import { LoginComponent } from '../login/login.component';
 import { DatabaseService } from '../service/database.service';
@@ -13,9 +13,9 @@ export class RegisterComponent implements OnInit {
 
   //registerform model
   registerForm = this.fb.group({
-    uname:[''],
-    acno:[''],
-    pswd:['']
+    uname:['',[Validators.required,Validators.pattern('[a-zA-Z ]*')]],
+    acno:['',[Validators.required,Validators.pattern('[0-9]*')]],
+    pswd:['',[Validators.required,Validators.pattern('[a-zA-Z0-9]*')]]
   })
 
 
@@ -38,5 +38,7 @@ export class RegisterComponent implements OnInit {
       }else{
         alert("user already exist!!")
       }
+    
   }
 }
+
