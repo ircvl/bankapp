@@ -19,10 +19,7 @@ width: 50%;
 
 }
 
-.box{
- 
-    width: 50%;
-}
+
 .row{
     display: flex;
 }
@@ -103,5 +100,6 @@ margin-left: 4px;
 .transaction{
     text-align: center;
     background-color: #FFC312;
-    margin-top: 5%;
+    margin-top: 2%;
+    margin-bottom: 2%;
 }
